@@ -622,6 +622,9 @@ function(vtk_module_library name)
     unset(${vtk-module}_LIB_DEPENDS CACHE)
   endif()
   vtk_add_library(${vtk-module}${force_object} ${ARGN} ${_hdrs} ${_instantiator_SRCS} ${_hierarchy})
+  set_target_properties(${vtk-module}${force_object}
+      PROPERTIES
+      FOLDER "VTK")
   if(_vtk_build_as_kit)
     # Make an interface library to link with for libraries.
     add_library(${vtk-module} INTERFACE)
